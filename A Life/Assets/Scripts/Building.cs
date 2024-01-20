@@ -53,15 +53,15 @@ public class Building : MonoBehaviour
 
     public void CheckActivity() {
             switch (act.aActivity) { // comparing activity types
-                case Activity_Class.Relax:
+                case Activity_class.Relax:
                     student.AfterRelax();
                     break;
 
-                case Activity_Class.Networking:
+                case Activity_class.Networking:
                     student.AfterNetworking();
                     break;
 
-                case Activity_Class.Study:
+                case Activity_class.Study:
                     student.AfterStudy();
                     break;
     }
