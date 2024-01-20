@@ -13,13 +13,38 @@ public class Activity : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Relaxmethod()
+    public void AfterRelax()
     {
         StudentController student1 = new StudentController();
         int studentStamina = student1.getMaxStamina();
-        if (studentStamina < 80 && studentStamina > 0)
+        if (studentStamina > 0)
         {
-            int b = student1.addStamina(20);
+           student1.addStamina(20);
+        }
+
+    }
+
+    public void AfterNetworking(int value)
+    {
+        StudentController student1 = new StudentController();
+        int studentStamina = student1.getMaxStamina();
+        if (studentStamina >= 10)
+        {
+            student1.minusStamina(10);
+            student1.addConnection(value);
         }
     }
+
+    public void AfterStudy(int value)
+    {
+        StudentController student1 = new StudentController();
+        int studentStamina = student1.getMaxStamina();
+        if (studentStamina >= 10)
+        {
+            student1.minusStamina(10);
+            student1.addGrade(value);
+        }
+    }
+
+
 }
