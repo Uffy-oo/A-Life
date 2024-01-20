@@ -60,11 +60,11 @@ public class Building : MonoBehaviour
                     break;
 
                 case Activity_class.Networking:
-                    student.AfterNetworking();
+                    student.AfterNetworking(10);
                     break;
 
                 case Activity_class.Study:
-                    student.AfterStudy();
+                    student.AfterStudy(10);
                     break;
     }
     }
