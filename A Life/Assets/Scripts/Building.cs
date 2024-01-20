@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
     // Start is called before the first frame update
     private Text activityDescription;
-    public gameObject taskPanel;
+    public GameObject taskPanel;
 
     private string currentActivity;
 
-    private Activity a;
+    private Activity act;
 
     void Start()
     {
@@ -18,15 +19,25 @@ public class Building : MonoBehaviour
         AssignActivity();
     }
 
-    public void AssignActivity()
+    public void AssignNewActivity()
     {
-        Activities activitiesManager = FindObjectOfType<Activities>();
-        if (activitiesManager != null)
+        Activity activityManager = FindObjectOfType<Activity>();
+        if (activityManager != null)
         {
-            currentActivity = activitiesManager.GetRandomActivity();
+            currentActivity = activityManager.GetRandomActivityForBuilding();
         }
-    }
+        else
+        {
+            Debug.LogWarning("Activities Manager not found!");//
+        }
 
+        // if (currentActivity != null)
+        // {
+        //     // If you have UI elements or other components that need to be updated, do it here.
+        //     // For example:
+        //     // activityDescription.text = currentActivity.description;
+        // }
+    }
     public void DisplayTask()
     {
         if (currentActivity != null)
@@ -41,9 +52,20 @@ public class Building : MonoBehaviour
         taskPanel.SetActive(false);
     }
 
-    public bool checkType()
-    {
-        return currentActivity != null && currentActivity.type == type;
+    public void CheckActivity() {
+            switch (act.aActivity) { // comparing activity types
+                case Activity_Class.Relax:
+                    act.AfterRelax();
+                    break;
+
+                case Activity_Class.Networking:
+                    act.AfterNetworking();
+                    break;
+
+                case Activity_Class.Study:
+                    act.AfterStudy();
+                    break;
+    }
     }
 
 }
