@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
 
     public void AssignNewActivity()
     {
-        Activity activityManager = FindObjectOfType<T>();
+        Activity activityManager = FindObjectOfType<Activity>();
         if (activityManager != null)
         {
             currentActivity = activityManager.GetRandomActivityForBuilding();
