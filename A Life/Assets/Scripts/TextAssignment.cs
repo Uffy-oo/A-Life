@@ -21,6 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) && isPlayerInside)
         {
+            dialogBoxText.text = activityText;
             dialogBox.SetActive(true);
         }
     }
