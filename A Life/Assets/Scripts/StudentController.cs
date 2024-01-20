@@ -5,25 +5,25 @@ using UnityEngine;
 public class StudentController : MonoBehaviour
 {
     public float speed = 3.0f;
-
+    public Student student;
 
     Rigidbody2D rigidbody2d;
 
-    int GradeScale;
-    int LinkedonConnection;
     float horizontal;
     float vertical;
-    private int maxStamina = 100;
     private Building nearbyBuilding = null;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        GradeScale = 0;
-        LinkedonConnection = 0;
+        this.student = new Student
+        {
+            GradeScale = 0,
+            LinkedonConnection = 0,
+            Stamina = 100
+        };
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -63,31 +63,7 @@ public class StudentController : MonoBehaviour
         }
     }
 
-    public int getMaxStamina()
-    {
-        return this.maxStamina;
-    }
-
-    public void setMaxStamina(int a)
-    {
-        this.maxStamina = a;
-    }
-
-    // set a addmethod with restrictions
-
-    public int addStamina(int value)
-    {
-        int answer = this.maxStamina + value;
-        if (answer < 100)
-        {
-            return answer;
-        }
-        else
-        {
-            return 100;
-        }
-
-    }
+  
 
     void FixedUpdate()
     {
@@ -97,31 +73,4 @@ public class StudentController : MonoBehaviour
 
         rigidbody2d.MovePosition(position);
     }
-
-
-    public int minusStamina(int value)
-    {
-        int answer = this.maxStamina - value;
-        if (answer > 0)
-        {
-            return answer;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    public int addConnection (int value)
-    {
-        int answer = this.LinkedonConnection + value;
-        return answer;
-    }
-
-    public int addGrade(int value)
-    {
-        int answer = this.GradeScale + value;
-        return answer;
-    }
-
 }
