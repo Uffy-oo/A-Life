@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private int CurrentStamina;
     private StudentController studentController;
     private Student student;
+    private int TotalConnection = 0;
+    private bool shouldStartNextSemester = false;
 
     void Awake()
     {
@@ -35,21 +37,29 @@ public class GameManager : MonoBehaviour
     {
         this.CurrentStamina = student.Stamina;
         this.WeeksLeft = student.WeeksLeft;
+
+        if (this.CurrentStamina == 0 || this.WeeksLeft == 0)
+        {
+            CurrentGpa = student.GradeScale + CurrentGpa;
+            TotalConnection = student.LinkedonConnection + TotalConnection;
+            EndSemester();
+            shouldStartNextSemester = true;
+        
+        }
+
+        if (shouldStartNextSemester && CurrentSemester < 8)
+        {
+            CurrentSemester++;
+            StartSemester();
+            shouldStartNextSemester = false;
+        }
     }
     // 游戏开始的方法
     public void StartGame()
     {
-        for (CurrentSemester = 1; CurrentSemester < 9; CurrentSemester++ ) {
-            StartSemester();
-            if (this.CurrentStamina == 0 || this.WeeksLeft == 0)
-            {
-                EndSemester();
-                CurrentSemester++;
-                CurrentGpa = student.GradeScale + CurrentGpa;
-            }
-        }
+        CurrentSemester = 1;
+        StartSemester();
 
-        EndGame();
     }
 
     public void StartSemester()
@@ -67,26 +77,10 @@ public class GameManager : MonoBehaviour
     {
         // 结束当前学期
         // 例如：保存学期成绩、更新状态等
+       
 
-        if (currentSemester < 2)
-        {
-            currentSemester++;
-        }
-        else
-        {
-            currentSemester = 1;
-            if (currentYear < 4)
-            {
-                currentYear++;
-            }
-            else
-            {
-                EndGame();
-                return;
-            }
-        }
 
-        StartSemester(); // 开始下一个学期
+      
     }
 
     public void EndGame()
