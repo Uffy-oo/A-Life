@@ -23,6 +23,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             dialogBoxText.text = activityText;
             dialogBox.SetActive(true);
+            //123
         }
     }
 
