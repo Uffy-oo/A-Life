@@ -70,4 +70,8 @@ public class StudentController : MonoBehaviour
 
         rigidbody2d.MovePosition(position);
     }
+    public Student getStudent()
+    {
+        return student;
+    }
 }

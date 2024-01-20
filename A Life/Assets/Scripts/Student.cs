@@ -7,7 +7,9 @@ public class Student
     public int GradeScale { get; set; }
     public int LinkedonConnection { get; set; }
     public int Stamina { get; set; }
+    public int WeeksLeft = 16;
     // Start is called before the first frame update
+
 
     public int getMaxStamina()
     {
@@ -61,9 +63,10 @@ public class Student
 
     public void AfterRelax()
     {
-        if (this.Stamina > 0)
+        if (this.Stamina > 0 && WeeksLeft >= 1)
         {
             this.addStamina(20);
+            ReduceWeek();
         }
 
     }
@@ -71,20 +74,27 @@ public class Student
     public void AfterNetworking(int value)
     {
  
-        if (Stamina >= 10)
+        if (Stamina >= 10 && WeeksLeft >= 1)
         {
-            minusStamina(10);
+            minusStamina(10 );
             addConnection(value);
+            ReduceWeek();
         }
     }
 
     public void AfterStudy(int value)
     {
 
-        if (Stamina >= 10)
+        if (Stamina >= 10 && WeeksLeft >= 1 )
         {
             minusStamina(10);
             addGrade(value);
+            ReduceWeek();
         }
+    }
+
+    public void ReduceWeek()
+    {
+        this.WeeksLeft--;
     }
 }
