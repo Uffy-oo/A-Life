@@ -15,4 +15,15 @@ public class EndResults : MonoBehaviour
     {
         
     }
+
+    public class ValueRange
+    {
+        public string labelText;
+        public Sprite image;
+    }
+
+    public ValueRange[] valueRanges;
+    public Text labelText;
+    public Image imageDisplay;
+    
 }
