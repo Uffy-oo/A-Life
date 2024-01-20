@@ -6,6 +6,8 @@ public class StudentController : MonoBehaviour
 {
     public float speed = 3.0f;
 
+    public int maxStamina;
+
     Rigidbody2D rigidbody2d;
 
     float horizontal;
