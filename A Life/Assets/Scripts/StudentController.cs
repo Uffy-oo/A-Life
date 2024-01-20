@@ -29,7 +29,40 @@ public class StudentController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+        // display task if building is nearby and 'E' is pressed
+        if (Input.GetKeyDown(KeyCode.E) && nearbyBuilding != null)
+        {
+            nearbyBuilding.displayTask();
+        }
+        // hide task if 'X' is pressed
+        if (Input.GetKeyDown(KeyCode.X) && nearbyBuilding != null)
+        {
+            nearbyBuilding.HideTask();
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Building"))
+            {
+                Building building = other.gameObject.GetComponent<Building>();
+                if (building != null)
+                {
+                    // Set nearbyBuilding if the student is close enough to the building
+                    nearbyBuilding = building;
+                }
+            }
+        }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Building") && nearbyBuilding == other.gameObject.GetComponent<Building>())
+            {
+                // Clear nearbyBuilding if the student is no longer close to the building
+                nearbyBuilding = null;
+            }
+        }
     }
+
     public int getMaxStamina()
     {
         return this.maxStamina;
@@ -54,38 +87,6 @@ public class StudentController : MonoBehaviour
             return 100;
         }
 
-    // display task if building is nearby and 'E' is pressed
-    if (Input.GetKeyDown(KeyCode.E) && nearbyBuilding!= null) {
-        nearbyBuilding.displayTask();
-    }
-
-
-    // hide task if 'X' is pressed
-    if (Input.GetKeyDown(KeyCode.X) && nearbyBuilding!= null) {
-        nearbyBuilding.HideTask();
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Building"))
-        {
-            Building building = other.gameObject.GetComponent<Building>();
-            if (building != null)
-            {
-                // Set nearbyBuilding if the student is close enough to the building
-                nearbyBuilding = building;
-            }
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Building") && nearbyBuilding == other.gameObject.GetComponent<Building>())
-        {
-            // Clear nearbyBuilding if the student is no longer close to the building
-            nearbyBuilding = null;
-        }
-    }
     }
 
     void FixedUpdate()
@@ -96,8 +97,7 @@ public class StudentController : MonoBehaviour
 
         rigidbody2d.MovePosition(position);
     }
-<<<<<<< Updated upstream
-=======
+
 
     public int minusStamina(int value)
     {
@@ -123,5 +123,5 @@ public class StudentController : MonoBehaviour
         int answer = this.GradeScale + value;
         return answer;
     }
->>>>>>> Stashed changes
+
 }
