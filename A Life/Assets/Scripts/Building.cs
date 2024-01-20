@@ -6,22 +6,23 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Text activityDescription;
     public GameObject taskPanel;
 
-    private string currentActivity;
+    public Activity currentActivity;
 
     private Activity act;
+
+    private Student student;
 
     void Start()
     {
         taskPanel.SetActive(false);
-        AssignActivity();
+        AssignNewActivity();
     }
 
     public void AssignNewActivity()
     {
-        Activity activityManager = FindObjectOfType<Activity>();
+        Activity activityManager = FindObjectOfType<T>();
         if (activityManager != null)
         {
             currentActivity = activityManager.GetRandomActivityForBuilding();
@@ -42,7 +43,7 @@ public class Building : MonoBehaviour
     {
         if (currentActivity != null)
         {
-            taskDescriptionText.text = currentActivity;
+            // taskDescriptionText.text = currentActivity;
             taskPanel.SetActive(true);
         }
     }
@@ -54,16 +55,16 @@ public class Building : MonoBehaviour
 
     public void CheckActivity() {
             switch (act.aActivity) { // comparing activity types
-                case Activity_Class.Relax:
-                    act.AfterRelax();
+                case Activity_class.Relax:
+                    student.AfterRelax();
                     break;
 
-                case Activity_Class.Networking:
-                    act.AfterNetworking();
+                case Activity_class.Networking:
+                    student.AfterNetworking(10);
                     break;
 
-                case Activity_Class.Study:
-                    act.AfterStudy();
+                case Activity_class.Study:
+                    student.AfterStudy(10);
                     break;
     }
     }
