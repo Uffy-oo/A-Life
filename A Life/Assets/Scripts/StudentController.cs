@@ -34,4 +34,6 @@ public class StudentController : MonoBehaviour
 
         rigidbody2d.MovePosition(position);
     }
+
+    //hello
 }
