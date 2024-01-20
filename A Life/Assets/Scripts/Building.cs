@@ -22,22 +22,16 @@ public class Building : MonoBehaviour
 
     public void AssignNewActivity()
     {
-        Activity activityManager = FindObjectOfType<Activity>();
+        // Correcting the type from Activity to ActivitiesManager
+        ActivitiesManager activityManager = FindObjectOfType<ActivitiesManager>();
         if (activityManager != null)
         {
             currentActivity = activityManager.GetRandomActivityForBuilding();
         }
         else
         {
-            Debug.LogWarning("Activities Manager not found!");//
+            Debug.LogWarning("Activities Manager not found!");
         }
-
-        // if (currentActivity != null)
-        // {
-        //     // If you have UI elements or other components that need to be updated, do it here.
-        //     // For example:
-        //     // activityDescription.text = currentActivity.description;
-        // }
     }
     public void DisplayTask()
     {
