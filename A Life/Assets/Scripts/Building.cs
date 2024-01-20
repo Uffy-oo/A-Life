@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Text activityDescription;
     public GameObject taskPanel;
 
-    private string currentActivity;
-
     private Activity act;
+
+    private Student student;
 
     void Start()
     {
@@ -42,7 +41,7 @@ public class Building : MonoBehaviour
     {
         if (currentActivity != null)
         {
-            taskDescriptionText.text = currentActivity;
+            // taskDescriptionText.text = currentActivity;
             taskPanel.SetActive(true);
         }
     }
@@ -55,15 +54,15 @@ public class Building : MonoBehaviour
     public void CheckActivity() {
             switch (act.aActivity) { // comparing activity types
                 case Activity_Class.Relax:
-                    act.AfterRelax();
+                    student.AfterRelax();
                     break;
 
                 case Activity_Class.Networking:
-                    act.AfterNetworking();
+                    student.AfterNetworking();
                     break;
 
                 case Activity_Class.Study:
-                    act.AfterStudy();
+                    student.AfterStudy();
                     break;
     }
     }
