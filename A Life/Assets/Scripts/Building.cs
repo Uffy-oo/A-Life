@@ -8,6 +8,8 @@ public class Building : MonoBehaviour
     // Start is called before the first frame update
     public GameObject taskPanel;
 
+    public Activity currentActivity;
+
     private Activity act;
 
     private Student student;
@@ -15,12 +17,12 @@ public class Building : MonoBehaviour
     void Start()
     {
         taskPanel.SetActive(false);
-        AssignActivity();
+        AssignNewActivity();
     }
 
     public void AssignNewActivity()
     {
-        Activity activityManager = FindObjectOfType<Activity>();
+        Activity activityManager = FindObjectOfType<T>();
         if (activityManager != null)
         {
             currentActivity = activityManager.GetRandomActivityForBuilding();
