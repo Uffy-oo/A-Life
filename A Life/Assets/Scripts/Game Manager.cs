@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     // 单例模式，确保全局只有一个GameManager实例
     public static GameManager Instance;
-    private int CurrentYear = 1;
     private int CurrentSemester = 1;
     private int CurrentGpa = 0;
     private int WeeksLeft = 16;
@@ -40,13 +39,17 @@ public class GameManager : MonoBehaviour
     // 游戏开始的方法
     public void StartGame()
     {
-        // 初始化游戏
-        // 设置 currentYear 和 currentSemester
-        CurrentYear = 1;
-        CurrentSemester = 1;
+        for (CurrentSemester = 1; CurrentSemester < 9; CurrentSemester++ ) {
+            StartSemester();
+            if (this.CurrentStamina == 0 || this.WeeksLeft == 0)
+            {
+                EndSemester();
+                CurrentSemester++;
+                CurrentGpa = student.GradeScale + CurrentGpa;
+            }
+        }
 
-        // 开始第一学期
-        StartSemester();
+        EndGame();
     }
 
     public void StartSemester()
