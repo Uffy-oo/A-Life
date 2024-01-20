@@ -5,12 +5,12 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Text activityDescription; /// text or string???
+    private Text activityDescription;
     public gameObject taskPanel;
 
     private string currentActivity;
 
-    if ()
+    private Activity a;
 
     void Start()
     {
@@ -41,7 +41,7 @@ public class Building : MonoBehaviour
         taskPanel.SetActive(false);
     }
 
-    public bool IsActivityType()
+    public bool checkType()
     {
         return currentActivity != null && currentActivity.type == type;
     }
