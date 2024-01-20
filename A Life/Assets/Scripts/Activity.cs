@@ -12,42 +12,5 @@ public class Activity
         this.aActivity = pActivity;
     }
 
-    // Update is called once per frame
-    public void AfterRelax()
-    {
-        StudentController controller = new StudentController();
-        Student student1 = controller.student;
-        int studentStamina = student1.getMaxStamina();
-        if (studentStamina > 0)
-        {
-           student1.addStamina(20);
-        }
-
-    }
-
-    public void AfterNetworking(int value)
-    {
-        StudentController controller = new StudentController();
-        Student student1 = controller.student;
-        int studentStamina = student1.getMaxStamina();
-        if (studentStamina >= 10)
-        {
-            student1.minusStamina(10);
-            student1.addConnection(value);
-        }
-    }
-
-    public void AfterStudy(int value)
-    {
-        StudentController controller = new StudentController();
-        Student student1 = controller.student;
-        int studentStamina = student1.getMaxStamina();
-        if (studentStamina >= 10)
-        {
-            student1.minusStamina(10);
-            student1.addGrade(value);
-        }
-    }
-
 
 }
