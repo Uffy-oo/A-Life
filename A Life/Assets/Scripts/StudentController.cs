@@ -32,7 +32,7 @@ public class StudentController : MonoBehaviour
         // display task if building is nearby and 'E' is pressed
         if (Input.GetKeyDown(KeyCode.E) && nearbyBuilding != null)
         {
-            nearbyBuilding.displayTask();
+            nearbyBuilding.DisplayTask();
         }
         // hide task if 'X' is pressed
         if (Input.GetKeyDown(KeyCode.X) && nearbyBuilding != null)
