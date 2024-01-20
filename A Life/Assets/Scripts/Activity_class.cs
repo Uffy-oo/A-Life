@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum Activity_class 
 {
-    Relax,
     Networking,
     Study
 }
