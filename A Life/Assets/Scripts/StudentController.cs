@@ -39,7 +39,7 @@ public class StudentController : MonoBehaviour
         {
             nearbyBuilding.HideTask();
         }
-
+    }
         void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Building"))
@@ -61,9 +61,6 @@ public class StudentController : MonoBehaviour
                 nearbyBuilding = null;
             }
         }
-    }
-
-  
 
     void FixedUpdate()
     {
