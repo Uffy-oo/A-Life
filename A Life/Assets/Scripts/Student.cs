@@ -58,4 +58,33 @@ public class Student
         int answer = this.GradeScale + value;
         return answer;
     }
+
+    public void AfterRelax()
+    {
+        if (this.Stamina > 0)
+        {
+            this.addStamina(20);
+        }
+
+    }
+
+    public void AfterNetworking(int value)
+    {
+ 
+        if (Stamina >= 10)
+        {
+            minusStamina(10);
+            addConnection(value);
+        }
+    }
+
+    public void AfterStudy(int value)
+    {
+
+        if (Stamina >= 10)
+        {
+            minusStamina(10);
+            addGrade(value);
+        }
+    }
 }
