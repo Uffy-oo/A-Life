@@ -6,18 +6,22 @@ public class StudentController : MonoBehaviour
 {
     public float speed = 3.0f;
 
-    public int maxStamina;
 
     Rigidbody2D rigidbody2d;
 
+    int GradeScale;
+    int LinkedonConnection;
     float horizontal;
     float vertical;
+    private int maxStamina = 100;
     private Building nearbyBuilding = null;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        GradeScale = 0;
+        LinkedonConnection = 0;
     }
 
     // Update is called once per frame
@@ -25,17 +29,64 @@ public class StudentController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-
         // display task if building is nearby and 'E' is pressed
-        if (Input.GetKeyDown(KeyCode.E) && nearbyBuilding!= null) {
+        if (Input.GetKeyDown(KeyCode.E) && nearbyBuilding != null)
+        {
             nearbyBuilding.displayTask();
         }
-
-
         // hide task if 'X' is pressed
-        if (Input.GetKeyDown(KeyCode.X) && nearbyBuilding!= null) {
+        if (Input.GetKeyDown(KeyCode.X) && nearbyBuilding != null)
+        {
             nearbyBuilding.HideTask();
         }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Building"))
+            {
+                Building building = other.gameObject.GetComponent<Building>();
+                if (building != null)
+                {
+                    // Set nearbyBuilding if the student is close enough to the building
+                    nearbyBuilding = building;
+                }
+            }
+        }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Building") && nearbyBuilding == other.gameObject.GetComponent<Building>())
+            {
+                // Clear nearbyBuilding if the student is no longer close to the building
+                nearbyBuilding = null;
+            }
+        }
+    }
+
+    public int getMaxStamina()
+    {
+        return this.maxStamina;
+    }
+
+    public void setMaxStamina(int a)
+    {
+        this.maxStamina = a;
+    }
+
+    // set a addmethod with restrictions
+
+    public int addStamina(int value)
+    {
+        int answer = this.maxStamina + value;
+        if (answer < 100)
+        {
+            return answer;
+        }
+        else
+        {
+            return 100;
+        }
+
     }
 
     void FixedUpdate()
@@ -47,26 +98,30 @@ public class StudentController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+
+    public int minusStamina(int value)
     {
-        if (other.gameObject.CompareTag("Building"))
+        int answer = this.maxStamina - value;
+        if (answer > 0)
         {
-            Building building = other.gameObject.GetComponent<Building>();
-            if (building != null)
-            {
-                // Set nearbyBuilding if the student is close enough to the building
-                nearbyBuilding = building;
-            }
+            return answer;
+        }
+        else
+        {
+            return 0;
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    public int addConnection (int value)
     {
-        if (other.gameObject.CompareTag("Building") && nearbyBuilding == other.gameObject.GetComponent<Building>())
-        {
-            // Clear nearbyBuilding if the student is no longer close to the building
-            nearbyBuilding = null;
-        }
+        int answer = this.LinkedonConnection + value;
+        return answer;
+    }
+
+    public int addGrade(int value)
+    {
+        int answer = this.GradeScale + value;
+        return answer;
     }
 
 }
