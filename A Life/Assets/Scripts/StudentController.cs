@@ -9,8 +9,8 @@ public class StudentController : MonoBehaviour
 
     Rigidbody2D rigidbody2d;
 
-    float GradeScale;
-    float LinkedonConnection;
+    int GradeScale;
+    int LinkedonConnection;
     float horizontal;
     float vertical;
     private int maxStamina = 100;
@@ -96,4 +96,32 @@ public class StudentController : MonoBehaviour
 
         rigidbody2d.MovePosition(position);
     }
+<<<<<<< Updated upstream
+=======
+
+    public int minusStamina(int value)
+    {
+        int answer = this.maxStamina - value;
+        if (answer > 0)
+        {
+            return answer;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public int addConnection (int value)
+    {
+        int answer = this.LinkedonConnection + value;
+        return answer;
+    }
+
+    public int addGrade(int value)
+    {
+        int answer = this.GradeScale + value;
+        return answer;
+    }
+>>>>>>> Stashed changes
 }
