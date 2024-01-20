@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Activity : MonoBehaviour
+public class Activity
 {
-    private Activity_class aActivity;
+    public Activity_class aActivity;
 
     // Start is called before the first frame update
     public Activity(Activity_class pActivity)
@@ -15,7 +15,8 @@ public class Activity : MonoBehaviour
     // Update is called once per frame
     public void AfterRelax()
     {
-        StudentController student1 = new StudentController();
+        StudentController controller = new StudentController();
+        Student student1 = controller.student;
         int studentStamina = student1.getMaxStamina();
         if (studentStamina > 0)
         {
@@ -26,7 +27,8 @@ public class Activity : MonoBehaviour
 
     public void AfterNetworking(int value)
     {
-        StudentController student1 = new StudentController();
+        StudentController controller = new StudentController();
+        Student student1 = controller.student;
         int studentStamina = student1.getMaxStamina();
         if (studentStamina >= 10)
         {
@@ -37,7 +39,8 @@ public class Activity : MonoBehaviour
 
     public void AfterStudy(int value)
     {
-        StudentController student1 = new StudentController();
+        StudentController controller = new StudentController();
+        Student student1 = controller.student;
         int studentStamina = student1.getMaxStamina();
         if (studentStamina >= 10)
         {
