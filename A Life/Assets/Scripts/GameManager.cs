@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class GameManager : MonoBehaviour
     private int currentYear = 1;
     private int currentSemester = 1;
     private void Awake()
+
+    public Text GPA;
+
     {
         if (Instance == null)
         {
