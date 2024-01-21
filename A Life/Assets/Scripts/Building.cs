@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,12 @@ public class Building : MonoBehaviour
     private Activity act;
 
     private Student student;
+
+    public Text taskDescriptionText; // 用于显示活动描述的文本组件
+
+    public Image taskImage; // 用于显示活动图片的图片组件
+
+
 
     void Start()
     {
@@ -37,10 +44,12 @@ public class Building : MonoBehaviour
     {
         if (currentActivity != null)
         {
-            // taskDescriptionText.text = currentActivity;
+            taskDescriptionText.text = currentActivity.description;
+            taskImage.sprite = currentActivity.image;
             taskPanel.SetActive(true);
         }
     }
+
 
     public void HideTask()
     {
