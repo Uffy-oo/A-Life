@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 {
     // 单例模式，确保全局只有一个GameManager实例
     public static GameManager Instance;
-    private int CurrentSemester = 1;
-    private float CurrentGpa = 0.0f;
+    public int CurrentSemester = 1;
+    public float CurrentGpa = 0.0f;
     private int WeeksLeft = 16;
     private int CurrentStamina;
     private StudentController studentController;
@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
 
         if (this.CurrentStamina == 0 || this.WeeksLeft == 0)
         {
-            CurrentGpa = student.GradeScale + CurrentGpa;
             TotalConnection = student.LinkedonConnection + TotalConnection;
             EndSemester();
             shouldStartNextSemester = true;
@@ -82,8 +81,39 @@ public class GameManager : MonoBehaviour
         // 结束当前学期
         // 例如：保存学期成绩、更新状态等
        
+        if (student.GradeScale >= 90)
+        {
+            CurrentGpa = 4.0f;
+        }
 
+        if (student.GradeScale >= 80 && student.GradeScale < 90)
+        {
+            CurrentGpa = 3.5f;
+        }
 
+        if (student.GradeScale >= 70 && student.GradeScale < 80)
+        {
+            CurrentGpa = 2.9f;
+        }
+
+        if (student.GradeScale >= 60 && student.GradeScale < 70)
+        {
+            CurrentGpa = 2.5f;
+        }
+
+        if (student.GradeScale >= 50 && student.GradeScale < 60)
+        {
+            CurrentGpa = 2.0f;
+        }
+
+        if (student.GradeScale >= 40 && student.GradeScale < 50)
+        {
+            CurrentGpa = 2.5f;
+        }
+        if (student.GradeScale >= 80 && student.GradeScale < 90)
+        {
+            CurrentGpa = 3.5f;
+        }
       
     }
 
