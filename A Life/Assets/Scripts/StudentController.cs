@@ -7,6 +7,10 @@ public class StudentController : MonoBehaviour
     public float speed = 3.0f;
     public Student student;
 
+    public int GradeScale;
+    public int LinkedonConnection;
+    public int Stamina;
+
     Rigidbody2D rigidbody2d;
 
     float horizontal;
