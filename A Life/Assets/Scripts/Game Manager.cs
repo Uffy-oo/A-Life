@@ -130,4 +130,5 @@ public class GameManager : MonoBehaviour
             endGameText.text = "You got accepted into Medical school. Now you are finally an average asian.";
         }
     }
+    //hello
 }
