@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivitiesManager : MonoBehaviour
+public class ActivitiesManager 
 {
     public List<Activity> allActivities; // Populate in the Unity Editor
     private List<Activity> shuffledActivities;

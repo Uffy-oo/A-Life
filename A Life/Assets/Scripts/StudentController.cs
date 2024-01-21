@@ -1,34 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StudentController : MonoBehaviour
 {
     public float speed = 3.0f;
+
+    public TextMeshProUGUI countText;
+
     public Student student;
 
-    Rigidbody2D rigidbody2d;
+    public int GradeScale;
+    public int LinkedonConnection;
+    public int Stamina;
 
+    Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
+
     private Building nearbyBuilding = null;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+
         this.student = new Student
         {
             GradeScale = 0,
             LinkedonConnection = 0,
             Stamina = 100
         };
+
+        UIManager.instance.UpdateStaminaBar(Stamina, 100);
+        UIManager.instance.UpdateGradeBar(GradeScale, 100);
+
     }
     // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
         // display task if building is nearby and 'E' is pressed
         if (Input.GetKeyDown(KeyCode.E) && nearbyBuilding != null)
         {
@@ -84,4 +98,5 @@ public class StudentController : MonoBehaviour
     {
         return student;
     }
+
 }

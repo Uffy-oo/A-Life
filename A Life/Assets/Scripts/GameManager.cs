@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private int CurrentStamina;
     private StudentController studentController;
     private Student student;
-    private int TotalConnection = 0;
+    public int TotalConnection = 0;
     public float TotalGpa = 0.0f;
     private bool shouldStartNextSemester = false;
     public TextMeshProUGUI endGameText;

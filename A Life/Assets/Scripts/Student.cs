@@ -28,10 +28,12 @@ public class Student
         int answer = this.Stamina + value;
         if (answer < 100)
         {
+            UIManager.instance.UpdateStaminaBar(answer, 100);
             return answer;
         }
         else
         {
+            UIManager.instance.UpdateStaminaBar(100, 100);
             return 100;
         }
 
@@ -41,10 +43,12 @@ public class Student
         int answer = this.Stamina - value;
         if (answer > 0)
         {
+            UIManager.instance.UpdateStaminaBar(answer, 100);
             return answer;
         }
         else
         {
+            UIManager.instance.UpdateStaminaBar(0, 100);
             return 0;
         }
     }
@@ -61,7 +65,13 @@ public class Student
         float answer = this.GradeScale + value;
         if (answer <= 100 )
         {
+            UIManager.instance.UpdateGradeBar((int) answer, 100);
             return answer;
+        }
+        else
+        {
+            UIManager.instance.UpdateGradeBar(100, 100);
+            return 100;
         }
         return GradeScale;
     }
@@ -86,6 +96,7 @@ public class Student
             addConnection(value);
             ReduceWeek();
         }
+        
     }
 
     public void AfterStudy(int value)
