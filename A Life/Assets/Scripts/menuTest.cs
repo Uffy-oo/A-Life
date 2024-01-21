@@ -25,7 +25,7 @@ public class menuTest : MonoBehaviour
     public void StartGame()
     {
         // Load scene, Load scene: menuTest
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
     }
 
     public void ExitGame()
