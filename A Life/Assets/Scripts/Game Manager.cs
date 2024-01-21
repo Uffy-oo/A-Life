@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private StudentController studentController;
     private Student student;
     private int TotalConnection = 0;
+    public float TotalGpa = 0.0f;
     private bool shouldStartNextSemester = false;
     public TextMeshProUGUI endGameText;
 
@@ -103,17 +104,15 @@ public class GameManager : MonoBehaviour
 
         if (student.GradeScale >= 50 && student.GradeScale < 60)
         {
-            CurrentGpa = 2.0f;
+            CurrentGpa = 2.2f;
         }
 
-        if (student.GradeScale >= 40 && student.GradeScale < 50)
+        if (student.GradeScale < 50)
         {
-            CurrentGpa = 2.5f;
+            CurrentGpa = 0.5f;
         }
-        if (student.GradeScale >= 80 && student.GradeScale < 90)
-        {
-            CurrentGpa = 3.5f;
-        }
+
+        TotalGpa = TotalGpa + CurrentGpa;
       
     }
 
@@ -121,44 +120,44 @@ public class GameManager : MonoBehaviour
     {
         // 游戏结束逻辑
         // 例如：显示最终成绩、成就等
-        CurrentGpa = CurrentGpa / 8;
+
+        TotalGpa = TotalGpa / 8;
         
         endGameText.text = "Game Over: You've completed all semesters! WEEEEE!";
 
-        if (CurrentGpa == 0.0)
+        if (TotalGpa == 0.0)
         {
             endGameText.text = "You've just upgraded your living situation to 'Outdoor Enthusiast'!";
         }
 
-        if (0.0 < CurrentGpa && CurrentGpa < 2.0)
+        if (0.0 < TotalGpa && TotalGpa < 2.0)
         {
             endGameText.text = "You've with officailly transformed into a LEGOAT. C'est Quebec, on parle francais. C'est non-negotiable.";
         }
 
-        if (2.0 <= CurrentGpa && CurrentGpa < 3.0 && TotalConnection < 600)
+        if (2.0 <= TotalGpa && TotalGpa < 3.0 && TotalConnection < 600)
         {
             endGameText.text = "You're now the proud architect of golden arches at the one and only McGill'Dondald's! ";
         }
 
-        if (2.0 <= CurrentGpa && CurrentGpa < 3.0 && TotalConnection >= 600)
+        if (2.0 <= TotalGpa && TotalGpa < 3.0 && TotalConnection >= 600)
         {
             endGameText.text = "It is not profession and not ethical. You've become an influencer!";
         }
 
-        if (3.0 <= CurrentGpa && CurrentGpa < 4.0 && TotalConnection >= 500)
+        if (3.0 <= TotalGpa && TotalGpa < 4.0 && TotalConnection >= 500)
         {
             endGameText.text = "You're offered to work at the GREATEST COMPANY ever: Ubihard and Bmazon! We're so proud of you that even our coffee machine just brewed a fresh batch of 'Proud-uccino' in your honor!";
         }
 
-        if (3.0 <= CurrentGpa && CurrentGpa < 4.0 && TotalConnection < 500)
+        if (3.0 <= TotalGpa && TotalGpa < 4.0 && TotalConnection < 500)
         {
             endGameText.text = "";
         }
 
-        if (CurrentGpa == 4.0)
+        if (TotalGpa == 4.0)
         {
             endGameText.text = "You got accepted into Medical school. Now you are finally an average asian.";
         }
     }
-    //hello
 }
