@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Student 
 {
-    public int GradeScale { get; set; }
+    public double GradeScale { get; set; }
     public int LinkedonConnection { get; set; }
     public int Stamina { get; set; }
     public int WeeksLeft = 16;
@@ -55,9 +55,9 @@ public class Student
         return answer;
     }
 
-    public int addGrade(int value)
+    public double addGrade(int value)
     {
-        int answer = this.GradeScale + value;
+        double answer = this.GradeScale + value;
         return answer;
     }
 
