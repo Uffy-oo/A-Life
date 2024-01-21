@@ -57,9 +57,15 @@ public class Student
 
     public float addGrade(int value)
     {
+
         float answer = this.GradeScale + value;
-        return answer;
+        if (answer <= 100 )
+        {
+            return answer;
+        }
+        return GradeScale;
     }
+
 
     public void AfterRelax()
     {
