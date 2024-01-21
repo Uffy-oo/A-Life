@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public i 
+    public Image StaminaBar;
+    public Image GradeScaleBar;
+
+    public void UpdateStaminaBar (student.GradeScale)
+    {
+        StaminaBar.fillAmount = 
+    }
 
 }
