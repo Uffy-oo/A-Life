@@ -37,7 +37,7 @@ public class StudentController : MonoBehaviour
         // hide task if 'X' is pressed
         if (Input.GetKeyDown(KeyCode.X) && nearbyBuilding != null)
         {
-            nearbyBuilding.HideTask();
+            nearbyBuilding.HideAllPanels();
         }
     }
 

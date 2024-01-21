@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject taskPanel;
+    public GameObject restPanel;
+    public GameObject studyPanel;
+    public GameObject networkingPanel;
 
     public Activity currentActivity;
-
-    private Activity act;
 
     private Student student;
 
@@ -23,7 +23,7 @@ public class Building : MonoBehaviour
 
     void Start()
     {
-        taskPanel.SetActive(false);
+        HideAllPanels();
         AssignNewActivity();
     }
 
@@ -42,34 +42,50 @@ public class Building : MonoBehaviour
     }
     public void DisplayTask()
     {
-        if (currentActivity != null)
+        // 先隐藏所有 Panel
+
+        // 根据当前活动类型显示相应的 Panel
+        switch (currentActivity.aActivity)
         {
-            taskDescriptionText.text = currentActivity.description;
-            taskImage.sprite = currentActivity.image;
-            taskPanel.SetActive(true);
+            case Activity_class.Relax:
+                restPanel.SetActive(true);
+                break;
+            case Activity_class.Study:
+                studyPanel.SetActive(true);
+                break;
+            case Activity_class.Networking:
+                networkingPanel.SetActive(true);
+                break;
+        }
+
+        // 更新 Panel 上的文本和图片信息
+        taskDescriptionText.text = currentActivity.description;
+        taskImage.sprite = currentActivity.image;
+    }
+
+    public void HideAllPanels()
+    {
+        restPanel.SetActive(false);
+        studyPanel.SetActive(false);
+        networkingPanel.SetActive(false);
+    }
+
+
+    public void CheckActivity()
+    {
+        switch (currentActivity.aActivity) // comparing activity types
+        {
+            case Activity_class.Relax:
+                student.AfterRelax();
+                break;
+            case Activity_class.Networking:
+                student.AfterNetworking(10);
+                break;
+            case Activity_class.Study:
+                student.AfterStudy(10);
+                break;
         }
     }
-
-
-    public void HideTask()
-    {
-        taskPanel.SetActive(false);
-    }
-
-    public void CheckActivity() {
-            switch (act.aActivity) { // comparing activity types
-                case Activity_class.Relax:
-                    student.AfterRelax();
-                    break;
-
-                case Activity_class.Networking:
-                    student.AfterNetworking(10);
-                    break;
-
-                case Activity_class.Study:
-                    student.AfterStudy(10);
-                    break;
-    }
-    }
-
 }
+
+
