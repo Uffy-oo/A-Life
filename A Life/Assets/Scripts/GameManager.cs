@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public float TotalGpa = 0.0f;
     private bool shouldStartNextSemester = false;
     public TextMeshProUGUI endGameText;
+    public Text ConnectionText;
 
     void Awake()
     {
@@ -57,6 +58,8 @@ public class GameManager : MonoBehaviour
             StartSemester();
             shouldStartNextSemester = false;
         }
+
+        ConnectionText.text = "Linkedon Connection: " + TotalConnection.ToString();
     }
     // 游戏开始的方法
     public void StartGame()
