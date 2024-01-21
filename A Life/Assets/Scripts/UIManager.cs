@@ -8,9 +8,9 @@ public class UIManager : MonoBehaviour
     public Image StaminaBar;
     public Image GradeScaleBar;
 
-    public void UpdateStaminaBar ()
+    public void UpdateStaminaBar (student.GradeScale)
     {
-
+        StaminaBar.fillAmount = 
     }
 
 }
