@@ -54,6 +54,15 @@ public class StudentController : MonoBehaviour
         }
     }
 
+//     void OnTriggerExit2D(Collider2D other)
+// {
+//     if (other.gameObject.CompareTag("Building") && nearbyBuilding == other.gameObject.GetComponent<Building>())
+//     {
+//         // Clear nearbyBuilding if the student is no longer close to the building
+//         nearbyBuilding = null;
+//     }
+// }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Building") && nearbyBuilding == other.gameObject.GetComponent<Building>())
