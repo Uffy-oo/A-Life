@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
     // 单例模式，确保全局只有一个GameManager实例
     public static GameManager Instance;
     private int CurrentSemester = 1;
-    private int CurrentGpa = 0;
+    private float CurrentGpa = 0.0;
     private int WeeksLeft = 16;
     private int CurrentStamina;
     private StudentController studentController;
     private Student student;
     private int TotalConnection = 0;
     private bool shouldStartNextSemester = false;
+    public TextMeshProUGUI endGameText;
 
     void Awake()
     {
@@ -87,5 +91,18 @@ public class GameManager : MonoBehaviour
     {
         // 游戏结束逻辑
         // 例如：显示最终成绩、成就等
+        CurrentGpa = CurrentGpa / 8;
+        
+        endGameText.text = "Game Over: You've completed all semesters! WEEEEE!"
+
+        if (CurrentGpa == 4.0)
+        {
+            endGameText.text = "You got accepted into Medical school. Now you are finally an average asian."
+        }
+
+        if (2.0 <= CurrentGpa < 3.0)
+        {
+            endGameText.text = "You've with officailly transformed into a LEGO"
+        }
     }
 }
