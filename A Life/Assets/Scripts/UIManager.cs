@@ -5,20 +5,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UImanageer instance { get; private set; }
+    public static UIManager instance { get; private set; }
 
-    void Awake()
-    {
-        instance = this;
-    }
+    public Image StaminaBar;
+    public Image GradeScaleBar;
+
+ 
 
     void Start()
     {
-        
+        instance = this;
     }
     
-    public Image StaminaBar;
-    public Image GradeScaleBar;
 
     public void UpdateStaminaBar (int curAmount, int maxAmount)
     {
